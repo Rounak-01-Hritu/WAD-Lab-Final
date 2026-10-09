@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+    <nav class="home-nav">
+        <a href="index.html" class="brand">Student<span>Service</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="register.html" class="nav-register">Register</a>
+        </div>
+    </nav>
+
+    <main class="auth-main">
+        <section class="auth-card">
+            <div class="auth-icon">🔐</div>
+
+            <h1>Welcome Back!</h1>
+            <p class="auth-subtitle">Log in to access your student account.</p>
+
+            <form action="/login" method="POST">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit" class="auth-submit">Login to Account →</button>
+            </form>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a href="register.html">Create one here</a>
+            </p>
+
+            <a href="index.html" class="back-home">← Back to Home</a>
+        </section>
+    </main>
+
+    <footer class="home-footer">
+        <p>© 2026 Student Service &amp; Complaint Management System</p>
+    </footer>
+
+</body>
+</html>

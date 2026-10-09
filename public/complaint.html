@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Complaint</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Service System</h1>
+    </header>
+
+    <main>
+
+        <h2>Submit Complaint</h2>
+
+        <form action="/submit-complaint" method="POST">
+
+            <label for="subject">Complaint Subject</label>
+<input type="text" id="subject" name="subject" required>
+
+<label for="category">Complaint Category</label>
+
+<select id="category" name="category" required>
+    <option value="">Select a category</option>
+    <option value="Academic">Academic</option>
+    <option value="Hostel">Hostel</option>
+    <option value="Transport">Transport</option>
+    <option value="IT/Internet">IT/Internet</option>
+    <option value="Library">Library</option>
+    <option value="Examination">Examination</option>
+    <option value="Other">Other</option>
+</select>
+
+
+<label for="priority">Complaint Priority</label>
+
+<select id="priority" name="priority" required>
+    <option value="Medium" selected>Medium</option>
+    <option value="Low">Low</option>
+    <option value="High">High</option>
+</select>
+
+<label for="description">Complaint Description</label>
+<textarea id="description" name="description" rows="6" required></textarea>
+
+<button type="submit" class="btn">Submit Complaint</button>
+
+        </form>
+
+        <br>
+
+        <a href="dashboard.html" class="btn">Back to Dashboard</a>
+
+        <p id="message"></p>
+
+    </main>
+
+</body>
+
+</html>

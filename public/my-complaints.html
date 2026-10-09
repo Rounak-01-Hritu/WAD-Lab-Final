@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Complaints</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Service System</h1>
+    </header>
+
+    <main>
+
+        <h2>My Complaints</h2>
+
+        <div id="complaintsList">
+            <p>Loading complaints...</p>
+        </div>
+
+        <br>
+
+        <a href="dashboard.html" class="btn">Back to Dashboard</a>
+
+    </main>
+
+    <script>
+
+        fetch("/my-complaints")
+            .then(response => response.json())
+            .then(complaints => {
+
+                const list = document.getElementById("complaintsList");
+
+                if (complaints.length === 0) {
+                    list.innerHTML = "<p>You have not submitted any complaints yet.</p>";
+                    return;
+                }
+
+                list.innerHTML = "";
+
+                complaints.forEach(complaint => {
+
+                    const complaintDiv = document.createElement("div");
+
+                    complaintDiv.innerHTML = `
+    <h3>${complaint.subject}</h3>
+
+    <p><strong>Category:</strong> ${complaint.category}</p>
+
+    <p><strong>Description:</strong> ${complaint.description}</p>
+
+    <p><strong>Status:</strong> ${complaint.status}</p>
+
+    <hr>
+`;
+
+                    list.appendChild(complaintDiv);
+
+                });
+
+            })
+            .catch(error => {
+                console.error(error);
+                document.getElementById("complaintsList").innerHTML =
+                    "<p>Error loading complaints.</p>";
+            });
+
+    </script>
+
+</body>
+
+</html>

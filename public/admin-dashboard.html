@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Service System</h1>
+    </header>
+
+    <main>
+
+        <h2>Admin Dashboard</h2>
+
+        <p>Welcome, Admin!</p>
+
+        
+<h3>Complaint Statistics</h3>
+
+<div class="dashboard-buttons">
+    <div class="stat-card">
+        <h3>Total Complaints</h3>
+        <p id="total">Loading...</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending</h3>
+        <p id="pending">Loading...</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>In Progress</h3>
+        <p id="inProgress">Loading...</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Resolved</h3>
+        <p id="resolved">Loading...</p>
+    </div>
+</div>
+
+<script>
+fetch("/admin/stats")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Could not load statistics");
+        }
+        return response.json();
+    })
+    .then(stats => {
+        document.getElementById("total").textContent = stats.total;
+        document.getElementById("pending").textContent = stats.pending;
+        document.getElementById("inProgress").textContent = stats.inProgress;
+        document.getElementById("resolved").textContent = stats.resolved;
+    })
+    .catch(error => {
+        console.error(error);
+        document.getElementById("total").textContent = "Error";
+        document.getElementById("pending").textContent = "Error";
+        document.getElementById("inProgress").textContent = "Error";
+        document.getElementById("resolved").textContent = "Error";
+    });
+</script>
+
+        <div class="dashboard-buttons">
+
+            <a href="admin-complaints.html" class="btn">View Complaints</a>
+
+            <a href="admin-complaints.html" class="btn">Manage Complaints</a>
+
+            <a href="/logout" class="btn">Logout</a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
